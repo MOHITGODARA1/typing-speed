@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <link rel="stylesheet" href="output.css">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Edu+AU+VIC+WA+NT+Arrows:wght@400..700&family=Edu+NSW+ACT+Hand+Pre:wght@400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playwrite+AU+SA:wght@100..400&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rowdies:wght@300;400;700&family=Tagesschrift&display=swap" rel="stylesheet">
+   <style>
+      body{
+         background: linear-gradient(180deg, #ff6a00 0%, #1f1f1f 100%);
+      }
+      .name{
+         font-family: "Edu NSW ACT Hand Pre", cursive;
+         font-weight: 500;
+         font-size: 50px;
+         color: aliceblue;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+         display: none;
+      }
+      .scrollbar-hide {
+         -ms-overflow-style: none;  /* IE and Edge */
+         scrollbar-width: none;  
+         overflow-x: auto;
+         scroll-behavior: smooth; 
+         animation: appear 1s ease-in-out forwards;  
+      }
+      @keyframes appear{
+         from{
+            transform: translate(0px,-400px);
+            opacity: 0;
+         }to{
+            transform: translate(0);
+            opacity: 1;
+         }
+      }
+      .animation{
+         animation: appear1 1s ease-in-out forwards;
+      }
+      @keyframes appear1{
+         from{
+            transform: translate(-400px);
+            opacity: 0;
+         }to{
+            transform: translate(0);
+            opacity: 1;
+         }
+      }
+   </style>
+</head>
+<body>
+   <div class="h-screen w-[100%] flex justify-center items-center overflow-hidden flex-col relative first">
+      <h1 class="name mb-4">Typing text</h1>
+      <div id="selectdivfortime" class="w-[80%] flex justify-end mr-4 mb-7 ">
+         <div class="selecttime h-9 w-22 bg-[#4a4a4a] rounded-2xl flex items-center justify-center mr-4 cursor-pointer hover:bg-[#5c5c5c]">
+            <p class="time text-white text-xl">30sec</p>
+         </div>
+         <div class= "selecttime h-9 w-22 bg-[#4a4a4a] rounded-2xl flex items-center justify-center mr-4 cursor-pointer hover:bg-[#5c5c5c]">
+            <p class="time text-white text-xl">1min</p>
+         </div>
+         <div class="selecttime h-9 w-22 bg-[#4a4a4a] rounded-2xl flex items-center justify-center mr-4 cursor-pointer hover:bg-[#5c5c5c]">
+            <p class="time text-white text-xl">2min</p>
+         </div>
+      </div>
+      <div class="w-[80%] h-[70px] flex justify-end mr-4 items-center hidden" id="timer">
+         <p class="text-2xl text-white"><span class="min">00</span>:<span class="second">00</span></p>
+      </div>
+      <div class="bg-white h-[80px] w-[80%] rounded-2xl overflow-x-scroll scrollbar-hide flex items-center">
+         <p class="text-2xl  whitespace-nowrap text font-bold"></p>
+      </div>
+     <div class="flex gap-7 mt-7 animation">
+        <button onclick="start()" class="h-[50px] w-[80px] bg-green-400 rounded-2xl">Start</button>
+        <button onclick="reset()" class="h-[50px] w-[80px] bg-red-400 rounded-2xl">restart</button>
+        <button onclick="next()" class="h-[50px] w-[80px] bg-white rounded-2xl">Next</button>
+     </div>
+     <div id="result" class="h-[20%] w-[50%]  bg-amber-50 flex text-3xl font-bold rounded-2xl mt-7">
+        <div class="w-[33%] h-[100%]  flex flex-col items-center">
+            WPM:<span id="wpm" class="mt-5">0</span>
+        </div>
+        <div class="w-[33%] h-[100%] flex flex-col items-center">
+            acuracy: <span class="mt-5" id="acu">0%</span>
+        </div>
+        <div class="w-[33%] h-[100%]  flex flex-col items-center">
+            Error <span class="mt-5" id="error">0</span>
+        </div>
+     </div>
+   </div>   
+
+   <script src="index.js"></script>
+</body>
+</html>
